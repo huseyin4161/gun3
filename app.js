@@ -58,6 +58,8 @@ async function register(email, password) {
     if (res.ok) {
         if (data.identities && data.identities.length === 0) {
             showMessage("Bu e-posta zaten kayitli.", "error");
+        } else if (data.access_token) {
+            setSession(data);
         } else {
             showMessage("Kayit basarili! Onay maili gonderildi. Lutfen e-postanizi kontrol edin.", "success");
         }
